@@ -1,13 +1,13 @@
 export const SITE = {
   website: "https://zyclaw0.github.io", // replace this with your deployed domain
   author: "ZyClaw0",
-  profile: "https://github.com/ZyClaw0",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "ZyClaw0 Blog",
+  profile: "",
+  desc: "Securing the digital frontier - cybersecurity insights, certifications, and tools.",
+  title: "Welcome to ZyBlog",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
-  postPerIndex: 4,
-  postPerPage: 4,
+  postPerIndex: 10,
+  postPerPage: 10,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
   showBackButton: true, // show back button in post detail
