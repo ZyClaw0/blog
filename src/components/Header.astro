@@ -2,7 +2,6 @@
 import IconX from "@/assets/icons/IconX.svg";
 import IconMoon from "@/assets/icons/IconMoon.svg";
 import IconSearch from "@/assets/icons/IconSearch.svg";
-import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
@@ -44,8 +43,9 @@ const isActive = (path: string) => {
   >
     <a
       href="/"
-      class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
+      class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none flex items-center gap-2"
     >
+      <img src="/notion-images/ZyRepo/Z_.png" alt="ZyBlog" class="h-8 w-auto" />
       {SITE.title}
     </a>
     <nav
@@ -72,13 +72,8 @@ const isActive = (path: string) => {
         ]}
       >
         <li class="col-span-2">
-          <a href="/posts" class:list={{ "active-nav": isActive("/posts") }}>
+          <a href="/archives" class:list={{ "active-nav": isActive("/archives") }}>
             Posts
-          </a>
-        </li>
-        <li class="col-span-2">
-          <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}>
-            Tags
           </a>
         </li>
         <li class="col-span-2">
@@ -86,26 +81,6 @@ const isActive = (path: string) => {
             About
           </a>
         </li>
-        {
-          SITE.showArchives && (
-            <li class="col-span-2">
-              <LinkButton
-                href="/archives"
-                class:list={[
-                  "focus-outline flex justify-center p-3 sm:p-1",
-                  {
-                    "active-nav [&>svg]:stroke-accent": isActive("/archives"),
-                  },
-                ]}
-                title="Archives"
-                aria-label="archives"
-              >
-                <IconArchive class="hidden sm:inline-block" />
-                <span class="sm:sr-only">Archives</span>
-              </LinkButton>
-            </li>
-          )
-        }
         <li class="col-span-1 flex items-center justify-center">
           <LinkButton
             href="/search"
