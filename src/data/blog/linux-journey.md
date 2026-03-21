@@ -12,11 +12,9 @@ description: ""
 
 
 
-
-
 Learning Linux is something a developer or every security enthusiast would (or should) love to do and be comfortable with, in their career. The most common reasons for this include the wide spread use of the platform and ease of tools available for various use cases.
 
-I recently visited a website [Linux Journey](https://linuxjourney.com/) recommended by a friend, that helps in learning Linux. Since then, I've been trying to follow along and refresh my  *Linux-fu* as they call it. The journey is broken down into  main sections:
+I recently visited a website [Linux Journey](https://linuxjourney.com/) recommended by a friend, that helps in learning Linux. Since then, I've been trying to follow along and refresh my  *Linux-fu* as they call it. The journey is broken down into 3 main sections:
 
 - Grasshopper
 - Journeyman

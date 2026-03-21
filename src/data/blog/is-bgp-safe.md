@@ -12,17 +12,15 @@ description: ""
 
 
 
-
-
 Cloudflare recently published a new site that can check if your ISP is using security measures to route the traffic over the internet. [Is BGP Safe Yet](https://isbgpsafeyet.com/) checks whether your Internet Service Provider (ISP) has security filters and measures in place that can make BGP stable and secure.
 
 There are interactive diagrams on the page where you can see how a BGP request would travel under normal conditions and if it is hijacked as shown below:
 
-![BGP.png](Is%BGP%safe/BGP.png)
+![BGP1.png](/images/BGP1.png)
 
-![BGP.png](Is%BGP%safe/BGP.png)
+![BGP2.png](/images/BGP2.png)
 
-![BGP.png](Is%BGP%safe/BGP.png)
+![BGP3.png](/images/BGP3.png)
 
 ### How are they doing it?
 

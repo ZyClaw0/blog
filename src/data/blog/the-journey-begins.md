@@ -11,8 +11,6 @@ description: ""
 
 
 
-
-
 Hello there! Thank you for stopping by. I intend to share my thoughts and learning experiences here to help anyone learn something new or look at a particular subject from a different perspective. A quote I like to refer back is:
 
 > “In learning you will teach, and in teaching you will learn.”

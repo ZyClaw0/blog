@@ -14,9 +14,7 @@ description: ""
 
 
 
-
-
-Have you ever been stuck with the windows operating system when you wanted to run some bash commands? Probably, you even downloaded some emulators to run your bash commands! Well, in windows , Microsoft has included a feature to allow you to install a Linux distro through the Microsoft Windows Store.
+Have you ever been stuck with the windows operating system when you wanted to run some bash commands? Probably, you even downloaded some emulators to run your bash commands! Well, in windows 10, Microsoft has included a feature to allow you to install a Linux distro through the Microsoft Windows Store.
 
 Before installing your favourite Linux distro, you have to enable a feature named *“Windows Subsystem for Linux”* from the *“Turn Windows features on or off”* setting from the control panel. Alternately, you could also enable this feature by running the following command through a Powershell prompt running as an administrator.
 

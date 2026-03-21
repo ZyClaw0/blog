@@ -1,16 +1,4 @@
----
-title: "DMARC - Domain-based Message Authentication, Reporting and Conformance"
-pubDatetime: 2025-01-17T00:00:00Z
-modDatetime: 2025-01-17T00:00:00Z
-featured: false
-draft: false
-tags:
-  - "DNS"
-  - "Email Security"
-description: ""
----
-
-
+# DMARC - Domain-based Message Authentication, Reporting and Conformance
 
 We looked at SPF and DKIM as two email authentication protocols that help us improve our email security. DMARC builds on top of these protocols to prevent spam or phishing emails. With SPF and DKIM implemented, the domain owners did not have a way to know whether their outbound emails were processed correctly, i.e., whether these outbound emails were marked as spam or rejected by the recipient email server. There was no way to debug and find out more about these issues. DMARC helps address these with Reporting & Conformance.
 
@@ -57,17 +45,17 @@ One can use any of these services to validate their DMARC deployment
 
 - *EasyDMARC could not identify DKIM records and was showing an incorrect DMARC result. Therefore, use this service with caution.*
     
-    ![EasyDMARC1.png](/images/EasyDMARC1.png)
+    ![EasyDMARC1.png](DMARC%20-%20Domain-based%20Message%20Authentication,%20Repor/EasyDMARC1.png)
     
 - *DMARCian was also unable to identify a DKIM record; nonetheless, the DMARC result was a pass.*
     
-    ![DMARCian1.png](/images/DMARCian1.png)
+    ![DMARCian1.png](DMARC%20-%20Domain-based%20Message%20Authentication,%20Repor/DMARCian1.png)
     
     After setting up the DMARC records:
     
-    ![DMARCian2.png](/images/DMARCian2.png)
+    ![DMARCian2.png](DMARC%20-%20Domain-based%20Message%20Authentication,%20Repor/DMARCian2.png)
     
-    ![DMARCian3.png](/images/DMARCian3.png)
+    ![DMARCian3.png](DMARC%20-%20Domain-based%20Message%20Authentication,%20Repor/DMARCian3.png)
     
 - *In the above cases, I suspect that these services are searching for a specific dkim selector used by popular services like Gmail, Yahoo or Microsoft. Since I am using a 3rd party email service provider, it is unable to identify the selector & hence fails the DKIM checks*.
 
@@ -99,3 +87,10 @@ Since DMARC can pass if either of SPF|DKIM passes, this could potentially allow 
     https://www.m3aawg.org/activities/training/dmarc-training-series
     
     https://datatracker.ietf.org/doc/html/rfc7489
+    
+
+---
+
+[🔙 2️⃣ 🏠](../Welcome%20to%20ZyBlog%20133984b8ad578073b4b6e62800ce71c3.md)
+
+---

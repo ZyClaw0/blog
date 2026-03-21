@@ -12,14 +12,12 @@ description: ""
 
 
 
-
-
 SPF is one of the foundational elements of email authentication for DMARC. This email authentication technique is used to verify that the sender is the person who we expect them to be. This helps in validating the authenticity of an email that we receive. The standard protocol used for email, the Simple Mail Transfer Protocol (SMTP) does not perform this validation and hence we use SPF.
 
 For example, if you receive an email from alice@acme.org, SPF helps in ensuring that:
 
-. Alice was the one who sent you that email and it was not forged
-. This email is not marked as spam by your email service provider
+1. Alice was the one who sent you that email and it was not forged
+2. This email is not marked as spam by your email service provider
 
 If you own a personal domain (or manage an organisation’s domain), then SPF will help ensure that your emails don’t get marked as spam, they are  delivered to the intended recipient and nobody else can pretend to be you! 
 
@@ -29,18 +27,18 @@ It is worth noting that there are valid use cases where you may want somebody el
 
 Here is a sample SPF record added to the DNS settings:
 
-`v=spf ip:... ip:... include:mailesender.com -all`
+`v=spf1 ip4:192.0.1.1 ip4:192.0.1.2 include:mailesender.com -all`
 
-| v=spf | This value specifies the SPF version number to be used |
+| v=spf1 | This value specifies the SPF version number to be used |
 | --- | --- |
-| ip:... ip:... | The next section specifies the IP address(es) of your email servers |
+| ip4:192.0.1.1 ip4:192.0.1.2 | The next section specifies the IP address(es) of your email servers |
 | include: mailsender.com | The following section may include any third-party organisations who are authorised to send on your behalf. In this case, the SPF for [mailsender.com](http://mailsender.com) will be checked and all those IP addresses/domains will be considered as authorised to send an email on your behalf |
 | -all | This specifies that addresses not listed in SPF are unauthorised and should be rejected. 
 The alternate option here is to use `~all` which specifies that any other IP addresses/domains can send on your behalf and be accepted but mark them as insecure or spam. The other option is to use `+all`, although that is not recommended as it defeats the purpose of adding an SPF record, because it allows any other IP addresses/domains to send on your behalf |
 
 This is how it looks at the DNS settings of a domain:
 
-![spf.png](SPF%-%Sender%Policy%Framework/spf.png)
+![spf.png](/images/spf.png)
 
 ### How does this work?
 
