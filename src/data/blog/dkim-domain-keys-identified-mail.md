@@ -31,7 +31,7 @@ Here is a sample DKIM record added in the DNS settings:
 
 This is how it looks at the DNS settings of a domain:
 
-![dkim.png](/images/DKIM%20-%20Domain%20Keys%20Identified%20Mail/dkim.png)
+![dkim.png](/images/DKIM---Domain-Keys-Identified-Mail/dkim.png)
 
 ### How does this work?
 
