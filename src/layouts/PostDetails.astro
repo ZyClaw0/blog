@@ -11,6 +11,7 @@ import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
+import IconClock from "@/assets/icons/IconClock.svg";
 import { SITE } from "@/config";
 
 type Props = {
@@ -19,6 +20,8 @@ type Props = {
 };
 
 const { post, posts } = Astro.props;
+
+const readTime = post.body ? Math.ceil(post.body.trim().split(/\s+/).length / 200) : 0;
 
 const {
   title,
@@ -93,8 +96,12 @@ const nextPost =
     >
       {title}
     </h1>
-    <div class="my-2 flex items-center gap-2">
+    <div class="my-2 flex items-center gap-4 opacity-80">
       <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
+      <span class="flex items-center gap-1 text-sm sm:text-base">
+        <IconClock class="inline-block size-6 min-w-5.5" />
+        {readTime} min read
+      </span>
     </div>
     <article
       id="article"
@@ -259,8 +266,49 @@ const nextPost =
   }
   attachCopyButtons();
 
+  /* Make References section collapsible */
+  function makeReferencesCollapsible() {
+    const article = document.getElementById("article");
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll("h1, h2, h3, h4, h5, h6, p"));
+    const refHeading = headings.find(h => h.textContent.trim().toLowerCase() === "references");
+    if (!refHeading) return;
+
+    // Gather all nodes between the heading and the end of the article
+    const nodesToWrap = [];
+    let sibling = refHeading.nextElementSibling;
+    while (sibling) {
+      nodesToWrap.push(sibling);
+      sibling = sibling.nextElementSibling;
+    }
+
+    if (nodesToWrap.length === 0) return;
+
+    // Create <details> element
+    const details = document.createElement("details");
+    details.id = "references-details";
+
+    // Create <summary> element
+    const summary = document.createElement("summary");
+    summary.textContent = "References";
+    summary.style.cssText =
+      "cursor:pointer;list-style:none;display:inline-block;font-size:1.25em;font-weight:bold;";
+    // Remove default triangle and add custom chevron
+    summary.style.borderBottom = "none";
+
+    details.appendChild(summary);
+    nodesToWrap.forEach(node => details.appendChild(node));
+
+    // Insert <details> right before the heading (then we remove the original heading)
+    refHeading.parentNode.insertBefore(details, refHeading);
+    refHeading.remove();
+  }
+  makeReferencesCollapsible();
+
   /* Go to page start after page swap */
-  document.addEventListener("astro:after-swap", () =>
-    window.scrollTo({ left: 0, top: 0, behavior: "instant" })
-  );
+  document.addEventListener("astro:after-swap", () => {
+    window.scrollTo({ left: 0, top: 0, behavior: "instant" });
+    makeReferencesCollapsible();
+  });
 </script>
