@@ -305,15 +305,17 @@ details.references-accordion .ref-link {
   padding: 0.35rem 0.75rem;
   margin: 0;
 }
-details.references-accordion .ref-link a { word-break: break-all; }`;
+details.references-accordion .ref-link a { word-break: break-all; }
+li:has(> details.references-accordion) { list-style: none; }`;
       document.head.appendChild(style);
     }
 
     // --- Step 2: Find the <li> that contains <p>References</p> ---
     const allLis = Array.from(article.querySelectorAll("li"));
     const targetLi = allLis.find(li => {
-      const ps = Array.from(li.querySelectorAll(":scope > p"));
-      return ps.some(p => p.textContent.trim().toLowerCase() === "references");
+      return Array.from(li.children).some(
+        child => child.tagName === 'P' && child.textContent.trim().toLowerCase() === 'references'
+      );
     });
     if (!targetLi) return;
 
@@ -328,7 +330,8 @@ details.references-accordion .ref-link a { word-break: break-all; }`;
     const details = document.createElement("details");
     details.className = "references-accordion";
 
-    const ps = Array.from(targetLi.querySelectorAll(":scope > p"));
+    const ps = Array.from(targetLi.children).filter(child => child.tagName === 'P');
+    let hasLinks = false;
     for (const p of ps) {
       if (p.textContent.trim().toLowerCase() === "references") {
         const summary = document.createElement("summary");
@@ -337,17 +340,20 @@ details.references-accordion .ref-link a { word-break: break-all; }`;
       } else {
         p.classList.add("ref-link");
         details.appendChild(p);
+        hasLinks = true;
       }
     }
 
-    // If only one link (or no links beyond the title), nothing to collapse
-    if (details.children.length <= 1) return;
+    // If no links beyond the title, nothing to collapse; keep original
+    if (!hasLinks) return;
 
     // --- Step 5: Replace the target in the DOM (order matters: build first, then swap) ---
     if (isSoloInList) {
       listEl.replaceWith(details);
     } else {
-      targetLi.replaceWith(details);
+      targetLi.innerHTML = "";
+      targetLi.style.listStyle = "none";
+      targetLi.appendChild(details);
     }
   }
   makeReferencesCollapsible();
